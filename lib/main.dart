@@ -1,3 +1,5 @@
+import 'package:bmoovd_/bowling.dart';
+import 'package:bmoovd_/core_elements/menu.dart';
 import 'package:bmoovd_/eat&drink.dart';
 import 'package:bmoovd_/headermenu.dart';
 import 'package:bmoovd_/sportsbar.dart';
@@ -32,6 +34,7 @@ class MyApp extends StatelessWidget {
           // When navigating to the "/second" route, build the SecondScreen widget.
           '/SportsBar': (context) => const SportsBar(title: "Sports Bar"),
           '/Eat&Drink': (context) => const EatAndDrink(title: "Eat & Drink"),
+          '/Bowling': (context) => const Bowling(title: "Bowling"),
         },
         title: 'Flutter Demo',
         theme: ThemeData(
@@ -125,44 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 backgroundColor: gray,
                 context: context,
                 builder: (BuildContext context) {
-                  return Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      children: [
-                        const Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Text(
-                                "Navigate",
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 12),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 40,
-                        ),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Padding(
-                            padding: const EdgeInsets.all(0.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                menuBtn("Home", "Home"),
-                                menuBtn("Sports Bar", "Home"),
-                                menuBtn("Eat & Drink", "Home")
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
+                  return buildMenu(context, gray, widget.title);
                 },
               );
             },

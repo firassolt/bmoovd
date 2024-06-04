@@ -1,28 +1,35 @@
 import 'package:bmoovd_/core_elements/menu.dart';
+import 'package:bmoovd_/eat&drink.dart';
+import 'package:bmoovd_/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_lightbox/flutter_lightbox.dart';
 import 'package:flutter_lightbox/image_type.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
-class EatAndDrink extends StatefulWidget {
-  const EatAndDrink({super.key, required this.title});
+class Bowling extends StatefulWidget {
+  const Bowling({super.key, required this.title});
   final String title;
   @override
-  State<EatAndDrink> createState() => _SportsBarState();
+  State<Bowling> createState() => _BowlingState();
 }
 
-class _SportsBarState extends State<EatAndDrink> {
-  Color lightGray = const Color.fromARGB(255, 18, 18, 18);
+class _BowlingState extends State<Bowling> {
   Color gray = const Color.fromARGB(255, 42, 42, 42);
   Color cream = const Color.fromARGB(255, 224, 206, 178);
+  Color lightGray = const Color.fromARGB(255, 18, 18, 18);
 
-  final List<String> images = [
-    'https://www.bmoovd.de/templates/yootheme/cache/20/eat-drink-001-203e3fce.webp',
-    'https://www.bmoovd.de/templates/yootheme/cache/88/eat-drink-003-888af3ae.webp',
-    'https://www.bmoovd.de/templates/yootheme/cache/b7/eat-drink-005-b791b12b.webp',
+  List<String> images = [
+    'https://www.bmoovd.de/images/sender/ard.png',
+    'https://www.bmoovd.de/images/sender/zdf.png',
+    'https://www.bmoovd.de/images/sender/sky.png',
+    'https://www.bmoovd.de/images/sender/dazn.png',
+    'https://www.bmoovd.de/images/sender/espn.png',
+    'https://www.bmoovd.de/images/sender/sport1.png',
+    'https://www.bmoovd.de/images/sender/eurosport.png',
+    'https://www.bmoovd.de/images/sender/nitro.png',
+    'https://www.bmoovd.de/images/sender/prosieben.png',
+    'https://www.bmoovd.de/images/sender/rtl.png'
   ];
 
   @override
@@ -76,7 +83,7 @@ class _SportsBarState extends State<EatAndDrink> {
                 const Row(
                   children: [
                     Text(
-                      "Delicious burger and beer",
+                      "Bowl and MOOV",
                       textAlign: TextAlign.start,
                       style: TextStyle(
                           fontSize: 30,
@@ -89,7 +96,7 @@ class _SportsBarState extends State<EatAndDrink> {
                     height: 180,
                     width: 380,
                     child: Image.network(
-                        "https://www.bmoovd.de/component/ajax/?p=image&src=%7B%22file%22%3A%22images%2Fhero%2Fb-moovd-eat-drink.png%22%2C%22type%22%3A%22webp%2C100%22%2C%22thumbnail%22%3A%22%2C%2C%22%7D&hash=f073bddc")),
+                        "https://www.bmoovd.de/templates/yootheme/cache/af/b-moovd-bowling-af46a8e4.webp")),
                 const SizedBox(
                   height: 20,
                 ),
@@ -97,12 +104,16 @@ class _SportsBarState extends State<EatAndDrink> {
                   children: [
                     Padding(
                       padding: EdgeInsets.all(0.0),
-                      child: Text(
-                        "B'HAPPY B'MOOVD",
-                        style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 12,
-                            fontFamily: "Pica"),
+                      child: SizedBox(
+                        width: 350,
+                        child: Text(
+                          "The bowling lanes at B'MOOVD are among the most modern.",
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 12,
+                              fontFamily: "Pica"),
+                        ),
                       ),
                     ),
                   ],
@@ -114,7 +125,7 @@ class _SportsBarState extends State<EatAndDrink> {
                     child: Column(
                   children: [
                     const Text(
-                      "B'MOOVD Sports Bar offers delicious burgers and over 40 types of beer. Enjoy juicy steaks, pinsas, bowls, salads, finger food, and creative fries amidst sports memorabilia and great events.",
+                      "Our 24 bowling lanes are state-of-the-art and digitally controlled. Use touchscreens to easily set up your games, choose from classic TEN-PIN or innovative bowling games, and view your scores and stats in real-time.",
                       style: TextStyle(color: Colors.white, fontSize: 16),
                       textAlign: TextAlign.justify,
                     ),
@@ -123,7 +134,7 @@ class _SportsBarState extends State<EatAndDrink> {
                     ),
                     Container(
                         width: 360,
-                        height: 83,
+                        height: 63,
                         decoration: const BoxDecoration(
                             color: Colors.white,
                             borderRadius:
@@ -133,15 +144,20 @@ class _SportsBarState extends State<EatAndDrink> {
                           child: Row(
                             children: [
                               const Flexible(
+                                flex: 1,
                                 child: Text(
-                                  "You can also enjoy Bad Ass Vodka by Dennis Rodman, wine from Lionel Messi, and wine from Ralf Schumacher.",
+                                  "How do you like our bowling alley ? Let us know.",
                                   style: TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
+                              SizedBox(
+                                width: 30,
+                              ),
                               const Text("2"),
                               IconButton(
+                                  isSelected: true,
                                   onPressed: () {},
                                   icon: const Icon(FontAwesomeIcons.heart))
                             ],
@@ -179,7 +195,7 @@ class _SportsBarState extends State<EatAndDrink> {
                                             Padding(
                                               padding: EdgeInsets.all(8.0),
                                               child: Text(
-                                                "Kitchen hours",
+                                                "Pricing",
                                                 textAlign: TextAlign.start,
                                                 style: TextStyle(
                                                     color: Colors.white,
@@ -278,7 +294,7 @@ class _SportsBarState extends State<EatAndDrink> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8))),
                             child: const Text(
-                              "Our menu",
+                              "Bowling League",
                               textAlign: TextAlign.center,
                             ),
                           )
@@ -301,7 +317,7 @@ class _SportsBarState extends State<EatAndDrink> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8))),
                             child: const Text(
-                              "Book a table",
+                              "Book a session",
                               textAlign: TextAlign.center,
                             ),
                           ),
@@ -340,15 +356,26 @@ class _SportsBarState extends State<EatAndDrink> {
   }
 }
 
-void buildImageList(List<String> images, ImageType imageType, context) {
-  showGeneralDialog(
-      context: context,
-      pageBuilder: (BuildContext context, Animation animation,
-          Animation secondaryAnimation) {
-        return LightBox(
-          initialIndex: 0,
-          images: images,
-          imageType: imageType,
-        );
-      });
+Widget menuBtn(key, currentView) {
+  Color lightGray = const Color.fromARGB(255, 42, 42, 42);
+  Color lightBlue = const Color.fromARGB(25, 13, 108, 242);
+  return ElevatedButton(
+    onPressed: () {
+      Get.offAndToNamed("/" + key.toString().replaceAll(" ", ""));
+    },
+    style: ElevatedButton.styleFrom(
+      shape: const LinearBorder(),
+      backgroundColor: currentView == key ? lightBlue : lightGray,
+      minimumSize:
+          const Size(double.infinity, 50), // Set minimum width and height
+    ),
+    child: Align(
+      alignment: Alignment.centerLeft,
+      child: Text(
+        key.toString(),
+        textAlign: TextAlign.left,
+        style: const TextStyle(color: Colors.white),
+      ),
+    ),
+  );
 }

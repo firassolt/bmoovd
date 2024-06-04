@@ -1,9 +1,10 @@
+import 'package:bmoovd_/core_elements/menu.dart';
+import 'package:bmoovd_/reservartion.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_lightbox/flutter_lightbox.dart';
 import 'package:flutter_lightbox/image_type.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 class SportsBar extends StatefulWidget {
@@ -18,21 +19,17 @@ class _SportsBarState extends State<SportsBar> {
   Color gray = const Color.fromARGB(255, 42, 42, 42);
   Color cream = const Color.fromARGB(255, 224, 206, 178);
 
-  final List<String> images = [
-    'https://www.bmoovd.de/templates/yootheme/cache/9e/dazn-9e6e00b5.webp',
-    'https://www.bmoovd.de/templates/yootheme/cache/88/ard-8850cca2.webp',
-    'https://www.bmoovd.de/templates/yootheme/cache/b9/zdf-b9a74343.webp',
-    'https://www.bmoovd.de/templates/yootheme/cache/c3/prime-c318027a.webp',
-    'https://www.bmoovd.de/templates/yootheme/cache/26/magenta-sport-26b78c36.webp',
-    'https://www.bmoovd.de/templates/yootheme/cache/10/dyn-1036b9e3.webp',
-    'https://www.bmoovd.de/templates/yootheme/cache/35/eurosport-359c19f1.webp',
-    'https://www.bmoovd.de/templates/yootheme/cache/8b/joyn-8b9b0d69.webp',
-    'https://www.bmoovd.de/templates/yootheme/cache/69/apple-69a9d221.webp',
-    'https://www.bmoovd.de/templates/yootheme/cache/21/ran-21d72585.webp',
-    'https://www.bmoovd.de/templates/yootheme/cache/b2/rtl-b2ae222c.webp',
-    'https://www.bmoovd.de/templates/yootheme/cache/aa/sport-d-aa9c78e5.webp',
-    'https://www.bmoovd.de/templates/yootheme/cache/69/yupp-69b4f05e.webp',
-    'https://www.bmoovd.de/templates/yootheme/cache/ef/sky-efedda6f.webp'
+  List<String> images = [
+    'https://www.bmoovd.de/images/sender/ard.png',
+    'https://www.bmoovd.de/images/sender/zdf.png',
+    'https://www.bmoovd.de/images/sender/sky.png',
+    'https://www.bmoovd.de/images/sender/dazn.png',
+    'https://www.bmoovd.de/images/sender/espn.png',
+    'https://www.bmoovd.de/images/sender/sport1.png',
+    'https://www.bmoovd.de/images/sender/eurosport.png',
+    'https://www.bmoovd.de/images/sender/nitro.png',
+    'https://www.bmoovd.de/images/sender/prosieben.png',
+    'https://www.bmoovd.de/images/sender/rtl.png'
   ];
 
   @override
@@ -60,44 +57,7 @@ class _SportsBarState extends State<SportsBar> {
               backgroundColor: lightGray,
               context: context,
               builder: (BuildContext context) {
-                return Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text(
-                              "Navigate",
-                              textAlign: TextAlign.start,
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 12),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 40,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: Padding(
-                          padding: const EdgeInsets.all(0.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              menuBtn("Home", Get.currentRoute),
-                              menuBtn("Sports Bar", Get.currentRoute),
-                              menuBtn("Eat & Drink", Get.currentRoute)
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                );
+                return buildMenu(context, gray, widget.title);
               },
             );
           },
@@ -136,7 +96,7 @@ class _SportsBarState extends State<SportsBar> {
                     height: 180,
                     width: 380,
                     child: Image.network(
-                        "https://www.bmoovd.de/templates/yootheme/cache/b5/b-moovd-sportsbar-b588da19.webp")),
+                        "https://www.bmoovd.de/component/ajax/?p=image&src=%7B%22file%22%3A%22images%2Fhero%2Fb-moovd-sportsbar.png%22%2C%22type%22%3A%22webp%2C100%22%2C%22thumbnail%22%3A%22%2C%2C%22%7D&hash=390d4600")),
                 const SizedBox(
                   height: 20,
                 ),
@@ -213,7 +173,9 @@ class _SportsBarState extends State<SportsBar> {
                   height: 20,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(Reservation(title: "Reservation"));
+                  },
                   style: ElevatedButton.styleFrom(
                       fixedSize: const Size(170, 50),
                       elevation: 0,
