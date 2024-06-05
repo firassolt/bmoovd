@@ -1,8 +1,10 @@
 import 'package:bmoovd_/core_elements/menu.dart';
+import 'package:bmoovd_/review.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neat_and_clean_calendar/flutter_neat_and_clean_calendar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/route_manager.dart';
 import 'package:time_picker_spinner_pop_up/time_picker_spinner_pop_up.dart';
 
 class Reservation extends StatefulWidget {
@@ -284,6 +286,7 @@ class _ReservationState extends State<Reservation> {
                 child: ElevatedButton(
               onPressed: () {
                 //TO DO
+                Get.to(Review(title: "Review"));
               },
               style: ElevatedButton.styleFrom(
                   fixedSize: const Size(170, 50),
