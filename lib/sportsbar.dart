@@ -1,11 +1,11 @@
 import 'package:bmoovd_/core_elements/menu.dart';
-import 'package:bmoovd_/reservartion.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_lightbox/flutter_lightbox.dart';
 import 'package:flutter_lightbox/image_type.dart';
 import 'package:get/get.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class SportsBar extends StatefulWidget {
   const SportsBar({super.key, required this.title});
@@ -31,6 +31,16 @@ class _SportsBarState extends State<SportsBar> {
     'https://www.bmoovd.de/images/sender/prosieben.png',
     'https://www.bmoovd.de/images/sender/rtl.png'
   ];
+  var controller = WebViewController()
+    ..setJavaScriptMode(JavaScriptMode.unrestricted)
+    ..setBackgroundColor(const Color(0x00000000))
+    ..runJavaScriptReturningResult('').then((value) {
+      print(value);
+    })
+    ..setUserAgent(
+        "String userAgent : 'Mozilla/5.0 (Linux; <Android Version>; <Build Tag etc.>) AppleWebKit/<WebKit Rev> (KHTML, like Gecko) Chrome/<Chrome Rev> Mobile Safari/<WebKit Rev>'")
+    ..loadRequest(Uri.parse(
+        'https://services.gastronovi.com/restaurants/96013/en/reservation'));
 
   @override
   Widget build(BuildContext context) {
@@ -174,7 +184,18 @@ class _SportsBarState extends State<SportsBar> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Get.to(Reservation(title: "Reservation"));
+                    showModalBottomSheet(
+                      backgroundColor: lightGray,
+                      context: context,
+                      builder: (BuildContext context) {
+                        return SingleChildScrollView(
+                          child: SizedBox(
+                            height: 800,
+                            child: WebViewWidget(controller: controller),
+                          ),
+                        );
+                      },
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                       fixedSize: const Size(170, 50),
